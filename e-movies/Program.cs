@@ -9,6 +9,7 @@ builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(buil
  ("DefaultConnectionString")));
 
 
+
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
@@ -34,3 +35,5 @@ app.MapControllerRoute(
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.Run();
+//seed database
+AppDbinitializer.Seed(app);
