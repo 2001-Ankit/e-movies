@@ -10,8 +10,10 @@ namespace e_movies.Data
             using (var serviceScope = applicationBuilder.ApplicationServices.CreateScope())
             {
                 var context = serviceScope.ServiceProvider.GetService<AppDbContext>();
-                //cinema
-                if (!context.Cinemas.Any() ){
+				//cinema
+				context.Database.EnsureCreated();
+
+				if (!context.Cinemas.Any() ){
                     context.Cinemas.AddRange(new List<CinemaModel>()
                     {
                         new CinemaModel()
@@ -67,7 +69,7 @@ namespace e_movies.Data
                         },
                         new ActorModel()
                         {
-                               FullName = "Actor 3",
+                            FullName = "Actor 3",
                             Bio = "This is the Bio of the second actor",
                             ProfileUrl = "http://dotnethow.net/images/actors/actor-3.jpeg"
                         },
